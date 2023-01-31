@@ -57,42 +57,88 @@ public class rar : MonoBehaviour
         //Normál esetben ezek használatosak:
         int r = -32;
         float rAbs = Mathf.Abs(r);
-        
+
 
         int z = 333;
         float zSign = Mathf.Sign(z); //1
-        
+
 
         int zn = -553;
         float znSign = Mathf.Sign(zn); //-1
 
         //saját:
-        float s = -34;
-        float sC =MyAbszoluut(s);
+        float s = -10;
+        float sC = MyAbszoluut(s);
         Debug.Log(sC);
 
-        
 
-        float sI = 43;
+
+        float sI = 20;
         float sIC = MyElojel(sI);
         Debug.Log(sIC);
 
+        float sII = -30;
+        float sIIC = MyElojel(sII);
+        Debug.Log(sIIC);
+
+        /*Clampelés. Példa:  Feladat: -Saját Clamp függvény. - Saját, egyedi speciális Clapm függvény mely akármilyen megadott számot 0 és 1 es közé tesz.
+        float examlpeClamp = Mathf.Clamp(0,0.1f,1);
+        Debug.Log(exampleClamp);
+        */
+        float vI = 42.2f, vII = 18.4f, vIII = 6;   // KORRIGÁLÁSRA SZORUL!!!
+        float nMid = Mathf.Clamp(vI,vII,vIII);
+        Debug.Log(nMid);
+
+
     }
     float MyAbszoluut(float n)
-    {
+    {/*
         if (n < 0)
         { return n *= -1; }
-        else return n;  
+        else return n; 
+        
+     */
+        return n < 0 ? n *= -1 : n;
+
     }
     float MyElojel(float n)
     {
-        float N;
+     /*
         if (n < 0)
         {
 
             return (n / n) * -1;
         }
         return n / n;
+     */
+
+        return n < 0 ? (n / n) * 1 : n / n; 
+
+    }
+    float MyVeryOwnClampFunction(float a, float b, float c) // !!! JAVÍTÁSRA SZORUL!!! 
+    {
+        float errorNum = 404.404f;
+
+        bool aMid = a > b && a < c; //a
+        bool bMid = b > a && b < c; //b
+        bool cMid = c > a && c < b; //c
+
+
+        if (aMid || !aMid)
+        {
+            return a;
+        }
+        else if (bMid || !bMid)
+        {
+            return b;
+        }
+        else if (cMid || !cMid)
+        {
+            return c;
+        }
+        else { return errorNum; }
+    
+    
     
     }
 
