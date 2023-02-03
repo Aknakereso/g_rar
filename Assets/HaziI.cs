@@ -48,7 +48,7 @@ public class HaziI : MonoBehaviour
         Debug.Log(resultInner);
         */
 
-        
+
         // Saját Clamp függvény: Clamp(megadott szám, min, max)   -Egy speciális Clamp01 függvény készítése, ami 0 és 1 közé "helyezi" a számot
         /*
         // operandusok:
@@ -77,15 +77,65 @@ public class HaziI : MonoBehaviour
 
         // Kerekítés: -felsele, -lefele, -ide oda
 
+        float a = -5.945f;
 
+        Debug.Log(BreakPointForRound(a)); //a.5 nek kell lennie, mindig pozitiv halmazban
+        // 5.5f Ok| 5.5f Ok | 5.5f OK | 5.5f ok | 5.5f ok | 5.5f ok | 5.5f ok | 5.5f ok
+
+        Debug.Log(prepareToBeRoundedUp(a)); // egy felfele kerekítendõ számot elõkészít arra, hogy +1 et adjak hozzá
+        //5.0f Ok | 5.0f Ok | 5.0f Ok | 5 ok    | 5 ok    | 5 ok    | 5.0f ok | 5.0f ok
+
+        Debug.Log(Fel(a)); // felfele kerekítõ függvényem
+        // 6 Ok   | 6 Ok    | 6 Ok    | 5 ok    | -5 ok   | -6 ok   | -6  ok  | -6 !! -6 lett!!
+
+        Debug.Log(Mathf.Ceil(a)); // sima felfele kerekítés 
+        //6 Ok    | 6 Ok    | 6 OK    | 5 ok    | -5 ok   | -6 ok   | -6  ok  | -6 !!-5 lett!!
+         
+
+        
+
+
+    }
+    float prepareToBeRoundedUp(float a)
+    {
+        float abs = myAbszolutFunction(a); //PL: |-3.4|;-> 3.4
+        int b = (int)abs;                 //3.4f -> 3    
+        float c = (float)b;        // 3-> 3.0f
+        return c;
+
+    }
+    
+    float BreakPointForRound(float a)  //Ehhez viszonyítva döntünk a kerekíésrõl
+    {
+        float abs = myAbszolutFunction(a); //PL: |-3.4|;-> 3.4
+        int b = (int)abs;                 //3.4f -> 3    
+        float c = (float)b + 0.5f;        // 3-> 3.0f+0.5f -> 3.5f
+        return c; // 3.5f A bevitt szám holtponttá alakított értékben, de abszolút értékben. (negatív számot késõbb negatívvá kell tenni)
+    
+    }
+    float Fel(float a )      // két megoldás lehetséges: egész értéken túli maradékkal való mûveletek; int alak +/-1
+    {
+        float b = myAbszolutFunction(a); //akármilyen is a (pl.:-3.5) az abszolút értékét vesszük.-> 3.5
+        float c = mySignFunction(a);    // az adott értéknek vesszük az elõjelét. Lényegében - vagy +.
+
+        if (a == (int)a)
+        {
+            return a;
+        }
+        else
+        {
+            return (prepareToBeRoundedUp(a) + 1) *c;
+
+        }
 
 
         
 
 
 
-
-    }
+    } 
+    
+    
 
     float Clamp01(float a) //O.K.
     {
@@ -148,7 +198,19 @@ public class HaziI : MonoBehaviour
 
 
     float mySignFunction(float a) // O.K.
-    {  
+    {  //egyszerûbb:
+        if (a < 0)
+        {
+            return -1;
+        }
+        else 
+        {
+            return 1;        
+        }
+
+
+
+        /*Én  megoldásom:
         if  (a < 0)
         {
             return -(a / a);
@@ -157,6 +219,7 @@ public class HaziI : MonoBehaviour
         {
             return a / a;
         } 
+        */
     }
 
     float myAbszolutFunction(float a) // O.K.
