@@ -14,8 +14,8 @@ public class HaziI : MonoBehaviour
         // -float bemenet, float kimenet
 
         //operandusok:
-        /*
-         ;
+       /*
+         
         float b = 12.5f;
         float resultInner;
         float resultMine;
@@ -46,11 +46,11 @@ public class HaziI : MonoBehaviour
 
         resultInner = Mathf.Sign(a);
         Debug.Log(resultInner);
-        */
+       */
 
 
         // Saját Clamp függvény: Clamp(megadott szám, min, max)   -Egy speciális Clamp01 függvény készítése, ami 0 és 1 közé "helyezi" a számot
-        /*
+       /*
         // operandusok:
 
         float a = 0.10f;
@@ -73,186 +73,218 @@ public class HaziI : MonoBehaviour
         //speciális Clamp függvény:
         res = Clamp01(a);
         Debug.Log(res);
-        */
-
-        // Kerekítés: -felsele, -lefele, -ide oda
         
-                float x = -2.5f;
+
+        // Kerekítés: -felfele, -lefele, -ide oda
+        
+
+                float x = -2.0f;
 
 
-        //  Debug.Log(myBeginnerFel(a)); //O.K.
+        Debug.Log(myFinalFel(x)); //Remekül mûködik
+        Debug.Log(Mathf.Ceil(x));
 
-        //  Debug.Log(myAdvancedFel(a)); // O.K.
+        Debug.Log(myFinalLe(x)); // Remekül mûködik
+        Debug.Log(Mathf.Floor(x));
 
-        //  Debug.Log(myMasterFel(a));  // O.K.
-        //  Debug.Log(myLe(a));     //O.K
+        Debug.Log(myFinalRound(x)); // Remekül mûködik
+        Debug.Log(Mathf.Round(x));
 
-
-
-        Debug.Log(myFinalRound(x));// -2.5 -> -4
-                Debug.Log(Mathf.Round(x)); 
-
-
-                
-
-                
-
-
+      */
+       /*
         // Pitagoraszi számhármast kiderítõ függvény (bool): három szám: a négyzeten + b négyzeten = c a négyzeten
 
-        float a = 2.45f;
-        float b = 3;
-        float c = 4;
+        float a = 9;
+        float b = 16;
+        float c = 25;
         
 
-        //Debug.Log(myPitTrio(a,b,c));
+        Debug.Log(myPitTrio(a,b,c)); // elég okésan mûködik.
        
-        //Soulslike feladatok:
-        // Egy függvény mely két bevitt szám közös osztóját adja vissza.
+      */
+
+
+      /*    // Egy függvény mely két bevitt szám közös osztóját adja vissza.
+        int a = -56;
+        int b = 20;
+
+        Debug.Log(myUltimateDividerSearcher(a, b));  // pozitívban és negatívban is jól mûködik. Kevert értéknél (- és +) 0 t ír ki.
+      */
+
+        // n = x számjegyeinek összege, vagyis 5 = 23-> 2+3 = 5
 
 
         
+
+
+
+
+
 
 
     }
-    float myUltimateDividerSearcher(float a, float b)
+    int myValueSummerToGetAGivenNumber(int a)
     {
-        /*float[] osztok;
+       // int cPos = (int)myAdvancedClampFunction(a, 1, 27);
+        
 
-        float maxN = Mathf.Max(a, b);
-        float minN = Mathf.Min(a,b);
-        float equalNI;
-        float equalNII;
+        if (a < 0)
+        {int cNeg = (int)myAdvancedClampFunction(a,-1,-27);
+
+            for (int i = -10; i > -1000; i-- )
+            {
+
+
+
+                return i;
+            }
+
+            return 1;
+        }
+        else 
+        {
+            for (int i = 10; i < 1000; i++)
+            {
+
+
+
+                return i;
+            }
+
+
+            return 0;
+        }
+        
+    }
+
+    int myUltimateDividerSearcher(int a, int b) // O.K.
+    {
+        float i;
+
+        float aa = (float)a;
+        float bb = (float)b;
+        
+        float Higher = Mathf.Max(a, b);
+        float Lesser = Mathf.Min(a, b);
 
         
 
-        if (a == b)
-           {
-                return a;
-           }
-
-        for (float i =minN; minN==0; minN--)
+        if (a < 0 && b < 0)
         {
-            if (minN % i ==0 )
+            for (i = Lesser; i <= 0; i++)
             {
-                var osztokLista = new List<float>() { i };
-                osztok = new float[] { +i };
+                if (Higher % i == 0 && Lesser % i == 0)
+                {
+                    return (int)i;
+                }
 
-                return Mathf.Max(osztok);
             }
-       
+
         }
-    */
-        return a + b; //ez kamu return
+        else 
+        { 
+            for (i =Lesser; i >=0;i-- )
+            {
+              if (Higher % i == 0 && Lesser % i ==0)
+              {
+                return (int) i;
+              }
+      
+            }
+
+        }
+        return 1;
+        
+       
+        
+        
+        
     
     }
-    bool myPitTrio(float a, float b, float c)
+    bool myPitTrio(float a, float b, float c)  // O.K.
     {
-        if (a * a + b * b == c * c)
+        
+
+        if (a < 0 || b < 0 || c < 0)
+        {
+            return false;
+
+        }
+        else if (a * a + b * b == c * c)
         {
             return true;
         }
         else if (b * b + c * c == a * a)
         {
             return true;
+
         }
-        else if (a * a + c * c == b * b)
+        else if (c * c + a * a == b * b)
         {
             return true;
+
         }
         else
-        { 
+        {
             return false;
-        } 
+        }
 
     }
 
-    float myLe(float a)
+    float myFinalLe(float a)   // O.K.
     {
-        int b;
-        if (a < 0)
+        float b = (float)(int)a;
+
+        if (a < 0 && a < b)
         {
 
-            b = (int)a;
-            return (float)b-1;
+            
+            return b-1;
 
         }
         else
         {
-            b = (int)a;
-            return (float)b;
+            
+            return b;
         }
    
     }
   
-    float myRound(float a) // Megnézettetni!!
-    {
-        if (a < 0 && a > (float)(int)a + 0.5 || a > 0 && a < (float)(int)a + 0.5)  //negatívokra és pozitícvokra, hogy int-hez hasonló egész alakjuk legyen
-        {
-            return (float)(int)a;
-
-
-        }
-        else if (a < 0 && a <= (float)(int)a + 0.5)  //negatívokra lefelekerekítés
-        {
-            return (float)(int)a - 1;
-
-
-        }
-        else //pozitívokra felfele kerekítés
-        {
-            return (float)(int)a + 1;
-        
-        }
-        
     
-    
-    }
-    float myFinalRound(float a) //legújabb függvény
+    float myFinalRound(float a)  //O.K.
     {
-        float maradek = a % 1;
-        float hiany = 1 - maradek;
+        float maradek;
+        float hiany;
+        float bNeg = (float)((int)a) - 0.5f;
+        float bPoz = (float)((int)a) + 0.5f;
 
-        if (a >= (float)(int)a + 0.5) // 
+        if (a <  bNeg)  
         {
-            return a + hiany;
-        }
-        else if (a <= (float)(int)a - 0.5)
-        {
+            maradek = -a % 1;
+            hiany = 1 - maradek;
+
             return a - hiany;
+        }
+        else if (a >=  bPoz)
+        {
+            maradek = a % 1;
+            hiany = 1 - maradek;
+
+            return a + hiany;
         }
         else
         {
             return (float)(int)a;
         }
-    
-    
-    }
 
 
-    float prepareToBeRoundedUp(float a)
-    {
-        float abs = myAbszolutFunction(a); 
-        int b = (int)abs;                   
-        float c = (float)b;        
-        return c;
-
     }
-    
-    float BreakPointForRound(float a)  //Ehhez viszonyítva döntünk a kerekíésrõl
+    float myFinalFel(float a)  //O.K.
     {
-        float s = mySignFunction(a);
-        float abs = myAbszolutFunction(a); //PL: |-3.4|;-> 3.4
-        int b = (int)abs;                 //3.4f -> 3    
-        float c = (float)b + 0.5f;        // 3-> 3.0f+0.5f -> 3.5f
-        return c * s; // 3.5f A bevitt szám holtponttá alakított értékben, de abszolút értékben. (negatív számot késõbb negatívvá kell tenni)
-    
-    }
-    float myMasterFel(float a)
-    {
-        if (a > (int)a && a > 0)
+        float b = (float)(int)a;
+        if (a > b && a > 0)
         {
-            return (float)(int)a + 1;
+            return b + 1;
         }
         else
         {
@@ -260,44 +292,7 @@ public class HaziI : MonoBehaviour
         }
       
     }
-    float myAdvancedFel(float a)
-    {
-        float s = mySignFunction(a);
-        if (a > (int)a)
-        {
-            a++;
-            int b = (int)a;
-            return (float)b * s;
-
-        }
-        else 
-        {
-            int b = (int)a;
-
-            return (float)b;
-        }
-
     
-    }
-    float myBeginnerFel(float a)  //negatívra is mûködik
-    {
-        float b = myAbszolutFunction(a); 
-        float c = mySignFunction(a);    
-
-        if (a < 0)
-        {
-            return prepareToBeRoundedUp(a) * c;
-        }
-        else if (a == (int)a)
-        {
-            return prepareToBeRoundedUp(a);
-
-        }
-        else
-        {
-            return (prepareToBeRoundedUp(a) + 1) * c;
-        }
-    }
     float Clamp01(float a) //O.K.
     {
         if (a >= 1)
