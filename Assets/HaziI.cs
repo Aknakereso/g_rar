@@ -14,107 +14,111 @@ public class HaziI : MonoBehaviour
         // -float bemenet, float kimenet
 
         //operandusok:
-       /*
-         
-        float b = 12.5f;
-        float resultInner;
-        float resultMine;
+        /*
 
-        // saját Abszolút függvényem:
-        resultMine = myAbszolutFunction(b);
-        Debug.Log(resultMine);
+         float b = 12.5f;
+         float resultInner;
+         float resultMine;
 
-        // Beépített absz függvény:
+         // saját Abszolút függvényem:
+         resultMine = myAbszolutFunction(b);
+         Debug.Log(resultMine);
 
-        resultInner = Mathf.Abs(b);
-        Debug.Log(resultInner);
-        
+         // Beépített absz függvény:
 
-        // Elõjelfüggvény:
+         resultInner = Mathf.Abs(b);
+         Debug.Log(resultInner);
 
 
-        //operandusok:
-        float a = -34.5f;
-        float resultInner;
-        float resultMine;
+         // Elõjelfüggvény:
 
-        //saját Elõjelfüggvény:
-        resultMine = mySignFunction(a);
-        Debug.Log(resultMine);
 
-        //Gépi függvény:
+         //operandusok:
+         float a = -34.5f;
+         float resultInner;
+         float resultMine;
 
-        resultInner = Mathf.Sign(a);
-        Debug.Log(resultInner);
-       */
+         //saját Elõjelfüggvény:
+         resultMine = mySignFunction(a);
+         Debug.Log(resultMine);
+
+         //Gépi függvény:
+
+         resultInner = Mathf.Sign(a);
+         Debug.Log(resultInner);
+        */
 
 
         // Saját Clamp függvény: Clamp(megadott szám, min, max)   -Egy speciális Clamp01 függvény készítése, ami 0 és 1 közé "helyezi" a számot
-       /*
-        // operandusok:
+        /*
+         // operandusok:
 
-        float a = 0.10f;
-        float b = -4;
-        float c = -100;
+         float a = 0.10f;
+         float b = -4;
+         float c = -100;
 
-        float res;
-        //saját Clamp függvény:
-        res = myAdvancedClampFunction(a,b,c);
-        Debug.Log(res);
+         float res;
+         //saját Clamp függvény:
+         res = myAdvancedClampFunction(a,b,c);
+         Debug.Log(res);
 
-        //saját "buta" clamp függvényem:
-        res = myBasicClamp(a, b, c);
-        Debug.Log(res);
+         //saját "buta" clamp függvényem:
+         res = myBasicClamp(a, b, c);
+         Debug.Log(res);
 
-        //Gépi függvény:
-        res = Mathf.Clamp(a,b,c);
-        Debug.Log(res);
+         //Gépi függvény:
+         res = Mathf.Clamp(a,b,c);
+         Debug.Log(res);
 
-        //speciális Clamp függvény:
-        res = Clamp01(a);
-        Debug.Log(res);
-        
-
-        // Kerekítés: -felfele, -lefele, -ide oda
-        
-
-                float x = -2.0f;
+         //speciális Clamp függvény:
+         res = Clamp01(a);
+         Debug.Log(res);
 
 
-        Debug.Log(myFinalFel(x)); //Remekül mûködik
-        Debug.Log(Mathf.Ceil(x));
-
-        Debug.Log(myFinalLe(x)); // Remekül mûködik
-        Debug.Log(Mathf.Floor(x));
-
-        Debug.Log(myFinalRound(x)); // Remekül mûködik
-        Debug.Log(Mathf.Round(x));
-
-      */
-       /*
-        // Pitagoraszi számhármast kiderítõ függvény (bool): három szám: a négyzeten + b négyzeten = c a négyzeten
-
-        float a = 9;
-        float b = 16;
-        float c = 25;
-        
-
-        Debug.Log(myPitTrio(a,b,c)); // elég okésan mûködik.
-       
-      */
+         // Kerekítés: -felfele, -lefele, -ide oda
 
 
-      /*    // Egy függvény mely két bevitt szám közös osztóját adja vissza.
-        int a = -56;
-        int b = 20;
+                 float x = -2.0f;
 
-        Debug.Log(myUltimateDividerSearcher(a, b));  // pozitívban és negatívban is jól mûködik. Kevert értéknél (- és +) 0 t ír ki.
-      */
+
+         Debug.Log(myFinalFel(x)); //Remekül mûködik
+         Debug.Log(Mathf.Ceil(x));
+
+         Debug.Log(myFinalLe(x)); // Remekül mûködik
+         Debug.Log(Mathf.Floor(x));
+
+         Debug.Log(myFinalRound(x)); // Remekül mûködik
+         Debug.Log(Mathf.Round(x));
+
+       */
+        /*
+         // Pitagoraszi számhármast kiderítõ függvény (bool): három szám: a négyzeten + b négyzeten = c a négyzeten
+
+         float a = 9;
+         float b = 16;
+         float c = 25;
+
+
+         Debug.Log(myPitTrio(a,b,c)); // elég okésan mûködik.
+
+       */
+
+
+        /*     // Egy függvény mely két bevitt szám közös osztóját adja vissza.
+          int a = 56;
+          int b = 20;
+
+          Debug.Log(myUltimateDividerSearcher(a, b));  // pozitívban és negatívban is jól mûködik. Kevert értéknél (- és +) 0 t ír ki.
+       */
+
 
         // n = x számjegyeinek összege, vagyis 5 = 23-> 2+3 = 5
 
+        //int a = 34;
 
-        
+        //myNumberTagSummer(a); // 5
+
+      
 
 
 
@@ -123,40 +127,14 @@ public class HaziI : MonoBehaviour
 
 
     }
-    int myValueSummerToGetAGivenNumber(int a)
+    int mySumTheValuesOfTheGivenNumber(int a)
     {
-       // int cPos = (int)myAdvancedClampFunction(a, 1, 27);
-        
 
-        if (a < 0)
-        {int cNeg = (int)myAdvancedClampFunction(a,-1,-27);
-
-            for (int i = -10; i > -1000; i-- )
-            {
-
-
-
-                return i;
-            }
-
-            return 1;
-        }
-        else 
-        {
-            for (int i = 10; i < 1000; i++)
-            {
-
-
-
-                return i;
-            }
-
-
-            return 0;
-        }
-        
+        return a;
+    
+    
     }
-
+  
     int myUltimateDividerSearcher(int a, int b) // O.K.
     {
         float i;
@@ -194,10 +172,6 @@ public class HaziI : MonoBehaviour
 
         }
         return 1;
-        
-       
-        
-        
         
     
     }
